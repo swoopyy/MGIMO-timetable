@@ -1,0 +1,317 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head id="headID"><title>
+	Report Viewer
+</title>
+  <style type="text/css"> SELECT { width: 300px; } </style>
+ <link href="/ReportServer?rs:command=StyleSheet&amp;Name=&amp;Version=2005.090.1399.00" rel="stylesheet" type="text/css" /></head>
+ <body style="margin: 0px; overflow: auto">
+  <form name="ReportViewerForm" method="post" action="ReportViewer.aspx?%2freports%2f%u0420%u0430%u0441%u043f%u0438%u0441%u0430%u043d%u0438%u0435+%u044f%u0437%u044b%u043a%u043e%u0432%u043e%u0439+%u0433%u0440%u0443%u043f%u043f%u044b&amp;rs%3aCommand=Render" id="ReportViewerForm">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNDY5NzIzNzI1D2QWAgIDD2QWAgIBDxQrAAQPFhAeEFYxU3R5bGVTaGVldE5hbWVkHgtab29tUGVyY2VudAJkHhRTaG93UHJvbXB0QXJlYUJ1dHRvbmceFERvY3VtZW50TWFwQ29sbGFwc2VkaB4OUmVuZGVyaW5nU3RhdGULKZIBTWljcm9zb2Z0LlJlcG9ydGluZy5XZWJGb3Jtcy5SZXBvcnRSZW5kZXJpbmdTdGF0ZSwgUmVwb3J0aW5nU2VydmljZXNXZWJTZXJ2ZXIsIFZlcnNpb249OS4wLjI0Mi4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTg5ODQ1ZGNkODA4MGNjOTECHghab29tTW9kZQsphgFNaWNyb3NvZnQuUmVwb3J0aW5nLldlYkZvcm1zLlpvb21Nb2RlLCBSZXBvcnRpbmdTZXJ2aWNlc1dlYlNlcnZlciwgVmVyc2lvbj05LjAuMjQyLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49ODk4NDVkY2Q4MDgwY2M5MQIeDkFzeW5jUmVuZGVyaW5nZx4ORW5hYmxlRmluZE5leHRoZCgpWFN5c3RlbS5HdWlkLCBtc2NvcmxpYiwgVmVyc2lvbj0yLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkkZmE2Y2Y5M2YtMDMzYi00NDNjLThjN2UtYWY3Y2ZmODIzNTRiAgEUKwABFCsAAgIBFCsAAgUYdW9yNHV5NTUwdXdydHM0NXUxZ2FpbzU1AgEWCGYPFCsAAmRnFg4CAw9kFgRmDw8WAh4EVGV4dAUKMzEuMTAuMjAxNmRkAgIPFggeA3NyYwVhL1JlcG9ydFNlcnZlci9SZXNlcnZlZC5SZXBvcnRWaWV3ZXJXZWJDb250cm9sLmF4ZD9PcFR5cGU9Q2FsZW5kYXImTENJRD0xMDQ5JnNlbGVjdERhdGU9MzEuMTAuMjAxNh4Jc2Nyb2xsaW5nBQJubx4Gb25sb2FkBd0BdGhpcy5yZXN1bHRmaWVsZD1kb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnUmVwb3J0Vmlld2VyQ29udHJvbF9jdGwwMF9jdGwwM19jdGwwMCcpO3RoaXMuT25TZWxlY3REYXRlQ2FsbGJhY2s9UmVwb3J0Vmlld2VyQ29udHJvbF9jdGwwMF9jdGwwM19jdGwwMi5PblNlbGVjdERhdGU7dGhpcy5yZXN1bHRmdW5jPVJlcG9ydFZpZXdlckNvbnRyb2xfY3RsMDBfY3RsMDNfQ2xvc2VDYWxlbmRhcjseBE5hbWUFJVJlcG9ydFZpZXdlckNvbnRyb2xfY3RsMDBfY3RsMDNfY3RsMDJkAgUPZBYCZg8QZGQWAQIBZAIHD2QWAmYPEGRkFgECAWQCCQ9kFgJmDxBkZBYBAgFkAgsPZBYCZg8QZGQWAQIBZAIND2QWAmYPEGRkFgECAWQCDw9kFgJmDxBkZBYBAgFkAgEPZBYOZg9kFgRmDw9kFgIeB29uY2xpY2sFN0NsaWVudFRvb2xiYXJSZXBvcnRWaWV3ZXJDb250cm9sX2N0bDAxLk9uRG9jTWFwQ2xpY2soKTtkAgEPFgIeBVZhbHVlBQVmYWxzZWQCAQ9kFgICAg8PFgQfCGUeB0VuYWJsZWRoFgIeCm9ua2V5cHJlc3MFyQFpZiAoZXZlbnQua2V5Q29kZSA9PSAxMCB8fCBldmVudC5rZXlDb2RlID09IDEzKSB7aWYgKCFDbGllbnRDb250cm9sbGVyUmVwb3J0Vmlld2VyQ29udHJvbC5IYW5kbGVVc2VyVGV4dFBhZ2VDaGFuZ2UodGhpcy52YWx1ZSkpIHtfX2RvUG9zdEJhY2soJ1JlcG9ydFZpZXdlckNvbnRyb2wkY3RsMDEkY3RsMDEkY3RsMDInLCcnKX0gcmV0dXJuIGZhbHNlO31kAgMPZBYCZg8QD2QWBB4Ib25jaGFuZ2UFTUNsaWVudFRvb2xiYXJSZXBvcnRWaWV3ZXJDb250cm9sX2N0bDAxLk9uWm9vbUNoYW5nZWQoZXZlbnQuc3JjRWxlbWVudC52YWx1ZSk7HghkaXNhYmxlZAUIZGlzYWJsZWRkFgECBWQCBA9kFgJmDw9kFgIfEAW7AWlmIChldmVudC5rZXlDb2RlID09IDEwIHx8IGV2ZW50LmtleUNvZGUgPT0gMTMpIHtpZiAoIUNsaWVudENvbnRyb2xsZXJSZXBvcnRWaWV3ZXJDb250cm9sLkhhbmRsZUNsaWVudFNpZGVGaW5kKCkpIHtfX2RvUG9zdEJhY2soJ1JlcG9ydFZpZXdlckNvbnRyb2wkY3RsMDEkY3RsMDQkY3RsMDAnLCcnKX0gcmV0dXJuIGZhbHNlO31kAgYPZBYCZg9kFgJmDw9kFgIfDQVmQ2xpZW50VG9vbGJhclJlcG9ydFZpZXdlckNvbnRyb2xfY3RsMDEubV9jbGllbnRDb250cm9sbGVyLkFjdGlvbkhhbmRsZXIoJ1JlZnJlc2gnLCBudWxsKTtyZXR1cm4gZmFsc2U7ZAIHD2QWAmYPZBYCZg9kFgJmDw9kFgIfDQVHQ2xpZW50VG9vbGJhclJlcG9ydFZpZXdlckNvbnRyb2xfY3RsMDEuTG9hZFByaW50Q29udHJvbCgpO3JldHVybiBmYWxzZTtkAggPDxYCHgdWaXNpYmxlaGRkAgYPFgIfDgUBMGQCBw8WAh8OBQEwZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WCAUlUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMCRjdGwwMyRjdGwwMQUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwMSRjdGwwMCRjdGwwMCRjdGwwMAUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwMSRjdGwwMSRjdGwwMCRjdGwwMAUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwMSRjdGwwNSRjdGwwMCRjdGwwMAUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwMSRjdGwwNiRjdGwwMCRjdGwwMAUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwMiRjdGwwMCRjdGwwMCRjdGwwMAUrUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwNiRjdGwwMCRjdGwwMAUxUmVwb3J0Vmlld2VyQ29udHJvbCRjdGwwMSRjdGwwNyRjdGwwMCRjdGwwMCRjdGwwMELWXqDP9OEJLQWmYI/qChkZMRT4" />
+
+
+<script src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Scripts.ReportViewer.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function ActionHandlerReportViewerControl(actionType, actionParam) { SaveActionsForPostback('ReportViewerControl_ctl04', 'ReportViewerControl_ctl05', actionType, actionParam); __doPostBack('ReportViewerControl',''); return false;}var ClientControllerReportViewerControl = new RSClientController(ActionHandlerReportViewerControl, "ReportViewerControl_ctl03", "ReportFrameReportViewerControl", "/ReportServer/Reserved.ReportViewerWebControl.axd?ExecutionID=uor4uy550uwrts45u1gaio55&ControlID=fa6cf93f-033b-443c-8c7e-af7cff82354b&Culture=1049&UICulture=25&ReportStack=1&OpType=DocMapArea&Controller=ClientControllerReportViewerControl&RootLabel=%d0%a0%d0%b0%d1%81%d0%bf%d0%b8%d1%81%d0%b0%d0%bd%d0%b8%d0%b5+%d1%8f%d0%b7%d1%8b%d0%ba%d0%be%d0%b2%d0%be%d0%b9+%d0%b3%d1%80%d1%83%d0%bf%d0%bf%d1%8b&UseStyleSheet=&Font=font-family%3aVerdana%3bfont-size%3a8pt%3b", "25%", false, "/ReportServer/Reserved.ReportViewerWebControl.axd?ExecutionID=uor4uy550uwrts45u1gaio55&ControlID=fa6cf93f-033b-443c-8c7e-af7cff82354b&Culture=1049&UICulture=25&ReportStack=1&OpType=ReportArea&Controller=ClientControllerReportViewerControl", true, true, true, true, true, true, "Введите допустимый номер страницы", "ReportViewerControl_ctl06", "ReportViewerControl_ctl07", true, "_top");
+var TextLinkReportViewerControl_ctl00_ctl01 = new ReportViewerLink("ReportViewerControl_ctl00_ctl01", true, "ActiveLink", "DisabledLink", "", "", "");var ClientParamsReportViewerControl_ctl00 = new RSParameters("", "DisabledTextBox", "ParametersGridReportViewerControl_ctl00", "ReportViewerControl_ctl00_ctl01");
+var HoverImageReportViewerControl_ctl01_ctl00_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl00_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl00_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl00_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl01_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl01_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl05_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl05_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl06_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl01_ctl06_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl02_ctl00_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl02_ctl00_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl02_ctl00_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl02_ctl00_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var TextLinkReportViewerControl_ctl01_ctl04_ctl01 = new ReportViewerLink("ReportViewerControl_ctl01_ctl04_ctl01", false, "ActiveLink", "DisabledLink", "", "", "");var TextLinkReportViewerControl_ctl01_ctl04_ctl03 = new ReportViewerLink("ReportViewerControl_ctl01_ctl04_ctl03", false, "ActiveLink", "DisabledLink", "", "", "");var TextLinkReportViewerControl_ctl01_ctl05_ctl01 = new ReportViewerLink("ReportViewerControl_ctl01_ctl05_ctl01", false, "ActiveLink", "DisabledLink", "", "", "");var HoverImageReportViewerControl_ctl01_ctl06_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl06_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl07_ctl00_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl07_ctl00_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl07_ctl00_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl07_ctl00_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl08_ctl00_ctl00 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl08_ctl00_ctl00", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var HoverImageReportViewerControl_ctl01_ctl08_ctl00_ctl01 = new ReportViewerHoverButton("ReportViewerControl_ctl01_ctl08_ctl00_ctl01", false, "NormalButton", "HoverButton", "HoverPressedButton", "", "", "", "", "", "");var ClientToolbarReportViewerControl_ctl01 = new RSToolbar(ClientControllerReportViewerControl, "ReportViewerControl_ctl01_ctl01_ctl02", "ReportViewerControl_ctl01_ctl01_ctl04", ClientImageToggleReportViewerControl_ctl01_ctl01_ctl00, ClientImageToggleReportViewerControl_ctl01_ctl01_ctl01, ClientImageToggleReportViewerControl_ctl01_ctl01_ctl05, ClientImageToggleReportViewerControl_ctl01_ctl01_ctl06, "ReportViewerControl_ctl01_ctl03_ctl00", "ReportViewerControl_ctl01_ctl04_ctl00", TextLinkReportViewerControl_ctl01_ctl04_ctl01, TextLinkReportViewerControl_ctl01_ctl04_ctl03, "ReportViewerControl_ctl01_ctl05_ctl00", TextLinkReportViewerControl_ctl01_ctl05_ctl01, "ParametersRowReportViewerControl", HoverImageReportViewerControl_ctl01_ctl00_ctl00, "ReportViewerControl_ctl01_ctl00", "ReportViewerControl_ctl01_ctl00_ctl01", "/ReportServer/Reserved.ReportViewerWebControl.axd?ExecutionID=uor4uy550uwrts45u1gaio55&ControlID=fa6cf93f-033b-443c-8c7e-af7cff82354b&Culture=1049&UICulture=25&ReportStack=1&OpType=PrintHtml", "PrintFrameReportViewerControl_ctl01_ctl07", "/ReportServer/Reserved.ReportViewerWebControl.axd?ExecutionID=uor4uy550uwrts45u1gaio55&ControlID=fa6cf93f-033b-443c-8c7e-af7cff82354b&Culture=1049&UICulture=25&ReportStack=1&OpType=Export&FileName=%d0%a0%d0%b0%d1%81%d0%bf%d0%b8%d1%81%d0%b0%d0%bd%d0%b8%d0%b5+%d1%8f%d0%b7%d1%8b%d0%ba%d0%be%d0%b2%d0%be%d0%b9+%d0%b3%d1%80%d1%83%d0%bf%d0%bf%d1%8b&ContentDisposition=OnlyHtmlInline&Format=", ClientImageToggleReportViewerControl_ctl01_ctl07_ctl00);
+
+                    function ReportViewerControl_ctl00_ctl03_CloseCalendar(resultfield)
+                    {
+                        if (true)
+                            DDClassReportViewerControl_ctl00_ctl03.SetAutoPostBackOnHide();
+                        DDClassReportViewerControl_ctl00_ctl03.ToggleVisibility();
+
+                        SetCalendarUrl(DDClassReportViewerControl_ctl00_ctl03, ReportViewerControl_ctl00_ctl03_ctl02, '/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Calendar&LCID=1049&selectDate=' + resultfield.value);
+                    }
+                    function ClientImageToggleReportViewerControl_ctl01_ctl01_ctl00(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl00_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl00_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}function ClientImageToggleReportViewerControl_ctl01_ctl01_ctl01(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl01_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl01_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}function ClientImageToggleReportViewerControl_ctl01_ctl01_ctl05(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl05_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl05_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}function ClientImageToggleReportViewerControl_ctl01_ctl01_ctl06(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl06_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl01_ctl06_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}function ClientImageToggleReportViewerControl_ctl01_ctl02_ctl00(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl02_ctl00_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl02_ctl00_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}function ClientImageToggleReportViewerControl_ctl01_ctl07_ctl00(shouldEnable)
+{
+    var enableHover = document.getElementById("ReportViewerControl_ctl01_ctl07_ctl00_ctl00");
+    var disableHover = document.getElementById("ReportViewerControl_ctl01_ctl07_ctl00_ctl01");
+    if (enableHover == null || disableHover == null)
+        return;
+    if (shouldEnable)
+    {
+        enableHover.style.display = "inline";
+        disableHover.style.display = "none";
+    }
+    else
+    {
+        disableHover.style.display = "inline";
+        enableHover.style.display = "none";
+    }
+}//]]>
+</script>
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="177045DE" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWMwLW+6SaDAK1yti7BwK0yti7BwKvqruOAQKwqruOAQKxqruOAQKyqruOAQLZr+DqCALGr+DqCALHr+DqCALEr+DqCALFr+DqCALCr+DqCALDr+DqCALAr+DqCALRr+DqCALer+DqCALGr6DpCAKTjJHrBAKMjJHrBAK8oImRDgKjoImRDgKioImRDgKhoImRDgKgoImRDgKmpfbNBQK5pfbNBQK4pfbNBQLQqr+mAwLPqr+mAwLOqr+mAwLNqr+mAwLMqr+mAwK/74ezAQKCiObbCwKhgOTbCwLIyK6XAQLdr+zbCwLA+fLbCwL3sYeWDwLol7ClCAKnj6WmBQLBjdSFCQLi+775BgKV5OyGCgKWvIy8BwKV2a/PCgLU/tvADQLV/tvADQLS/tvADQLT/tvADSM5qzL83QXPAzJ8L7mwvN3GjDyW" />
+   <table id="ReportViewerControl" cellpadding="0" cellspacing="0" onclick="ClientParamsReportViewerControl_ctl00.ControlClicked();" onactivate="ClientParamsReportViewerControl_ctl00.ControlClicked();" height="100%" width="100%" style="display:inline-block;">
+	<tr id="ParametersRowReportViewerControl">
+		<td><div id="ReportViewerControl_ctl00">
+			<table cellpadding="0" cellspacing="0" width="100%" class="ParametersFrame ParamsGrid MenuBarBkGnd">
+				<tr>
+					<td width="100%" height="100%"><table id="ParametersGridReportViewerControl_ctl00">
+						<tr IsParameterRow="true">
+							<td class="ParamLabelCell"><span>Выберите дату отчетной недели:</span></td><td class="ParamEntryCell" onactivate="event.cancelBubble=true;"><span id="ReportViewerControl_ctl00_ctl03"><input name="ReportViewerControl$ctl00$ctl03$ctl00" type="text" value="31.10.2016" size="28" id="ReportViewerControl_ctl00_ctl03_ctl00" />&nbsp;<input src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&Version=9.00.1399.00&Name=calendar.gif" name="ReportViewerControl$ctl00$ctl03$ctl01" type="image" id="ReportViewerControl_ctl00_ctl03_ctl01" onclick="DDClassReportViewerControl_ctl00_ctl03.ToggleVisibility();event.cancelBubble=true;SetCalendarUrl(DDClassReportViewerControl_ctl00_ctl03, ReportViewerControl_ctl00_ctl03_ctl02, '/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Calendar&amp;LCID=1049&amp;selectDate=' + document.getElementById('ReportViewerControl_ctl00_ctl03_ctl00').value);return false;" style="cursor:pointer;" /></span></td><td class="InterParamPadding"></td><td class="ParamLabelCell"><span>Виды программ</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl05$ctl00" id="ReportViewerControl_ctl00_ctl05_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">бакалавриат</option>
+								<option value="2">магистратуры</option>
+								<option value="3">другие&nbsp;образовательные&nbsp;программы</option>
+
+							</select></span></td>
+						</tr><tr IsParameterRow="true">
+							<td class="ParamLabelCell"><span>Выберите факультет:</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl07$ctl00" id="ReportViewerControl_ctl00_ctl07_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">Институт&nbsp;международных&nbsp;отношений&nbsp;и&nbsp;управления</option>
+								<option value="2">Международный&nbsp;институт&nbsp;энергетической&nbsp;политики&nbsp;и&nbsp;дипломатии</option>
+								<option value="3">Ф-т&nbsp;Государственного&nbsp;управления</option>
+								<option value="4">Ф-т&nbsp;Международного&nbsp;бизнеса&nbsp;и&nbsp;делового&nbsp;администрирования</option>
+								<option value="5">Ф-т&nbsp;Международной&nbsp;журналистики</option>
+								<option value="6">Ф-т&nbsp;Международно-правовой</option>
+								<option value="7">Ф-т&nbsp;Международных&nbsp;отношений</option>
+								<option value="8">Ф-т&nbsp;Международных&nbsp;экономических&nbsp;отношений</option>
+								<option value="9">Ф-т&nbsp;Политологии</option>
+								<option value="10">Ф-т&nbsp;Прикладной&nbsp;экономики&nbsp;и&nbsp;коммерции</option>
+
+							</select></span></td><td class="InterParamPadding"></td><td class="ParamLabelCell"><span>Выберите отделение:</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl09$ctl00" id="ReportViewerControl_ctl00_ctl09_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">Институт&nbsp;международных&nbsp;отношений&nbsp;и&nbsp;управления</option>
+
+							</select></span></td>
+						</tr><tr IsParameterRow="true">
+							<td class="ParamLabelCell"><span>Выберите курс:</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl11$ctl00" id="ReportViewerControl_ctl00_ctl11_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+
+							</select></span></td><td class="InterParamPadding"></td><td class="ParamLabelCell"><span>Выберите академическую группу:</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl13$ctl00" id="ReportViewerControl_ctl00_ctl13_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">01</option>
+								<option value="2">02</option>
+
+							</select></span></td>
+						</tr><tr IsParameterRow="true">
+							<td class="ParamLabelCell"><span>Выберите языковую группу:</span></td><td class="ParamEntryCell"><span><select name="ReportViewerControl$ctl00$ctl15$ctl00" id="ReportViewerControl_ctl00_ctl15_ctl00">
+								<option value="0">&lt;Выберите&nbsp;значение&gt;</option>
+								<option selected="selected" value="1">02-рус/англ/фр</option>
+								<option value="2">04-фр/англ/нем</option>
+								<option value="3">06-нем/фр/англ</option>
+								<option value="4">08-китай/англ/фр</option>
+
+							</select></span></td>
+						</tr>
+					</table></td><td width="6px"></td><td class="SubmitButtonCell"><table>
+						<tr>
+							<td><input type="submit" name="ReportViewerControl$ctl00$ctl00" value="Просмотр отчета" onclick="return ClientParamsReportViewerControl_ctl00.ValidateHasValue('ReportViewerControl_ctl00_ctl03_ctl00', '', 'Введите значение параметра &quot;Выберите дату отчетной недели:&quot;. Параметр не может быть пустым.') &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl05_ctl00', 'Выберите значение параметра &quot;Виды программ&quot;.', true) &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl07_ctl00', 'Выберите значение параметра &quot;Выберите факультет:&quot;.', true) &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl09_ctl00', 'Выберите значение параметра &quot;Выберите отделение:&quot;.', true) &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl11_ctl00', 'Выберите значение параметра &quot;Выберите курс:&quot;.', true) &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl13_ctl00', 'Выберите значение параметра &quot;Выберите академическую группу:&quot;.', true) &amp;&amp; ClientParamsReportViewerControl_ctl00.ValidateDropDown('ReportViewerControl_ctl00_ctl15_ctl00', 'Выберите значение параметра &quot;Выберите языковую группу:&quot;.', true);" id="ReportViewerControl_ctl00_ctl00" /></td>
+						</tr>
+					</table></td>
+				</tr>
+			</table>
+		</div><iframe id="ReportViewerControl_ctl00_ctl03_ctl02" onclick="event.cancelBubble=true;" onactivate="event.cancelBubble=true;" style="display:none;position:absolute;" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Calendar&amp;LCID=1049&amp;selectDate=31.10.2016" frameBorder="0" scrolling="no" onload="this.resultfield=document.getElementById('ReportViewerControl_ctl00_ctl03_ctl00');this.OnSelectDateCallback=ReportViewerControl_ctl00_ctl03_ctl02.OnSelectDate;this.resultfunc=ReportViewerControl_ctl00_ctl03_CloseCalendar;" Name="ReportViewerControl_ctl00_ctl03_ctl02"></iframe></td>
+	</tr><tr>
+		<td><div id="ReportViewerControl_ctl01" class="MenuBarBkGnd">
+			<div class="ToolBarButtonsCell">
+				<div class="ToolbarPageNav WidgetSet">
+					<table cellpadding="0" cellspacing="0" style="display:inline;">
+						<tr>
+							<td height="28px"><div id="ReportViewerControl_ctl01_ctl01_ctl00">
+								<table id="ReportViewerControl_ctl01_ctl01_ctl00_ctl00" onmouseover="HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl00.OnHover();" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl00.OnNormal();" title="Первая страница" style="display:none;">
+									<tr>
+										<td><input type="image" name="ReportViewerControl$ctl01$ctl01$ctl00$ctl00$ctl00" class="ImageWidget" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.FirstPage.gif" onclick="return !ClientControllerReportViewerControl.HandleClientSidePageNav(1);" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl00.OnNormal();
+								</script><table id="ReportViewerControl_ctl01_ctl01_ctl00_ctl01" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl01.OnNormal();" class="DisabledButton" title="Первая страница" style="display:inline;">
+									<tr>
+										<td><img src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.FirstPageDisabled.gif" alt="Первая страница" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl00_ctl01.OnNormal();
+								</script>
+							</div></td><td class="InterWidgetGroup"></td><td height="28px"><div id="ReportViewerControl_ctl01_ctl01_ctl01">
+								<table id="ReportViewerControl_ctl01_ctl01_ctl01_ctl00" onmouseover="HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl00.OnHover();" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl00.OnNormal();" title="Предыдущая страница" style="display:none;">
+									<tr>
+										<td><input type="image" name="ReportViewerControl$ctl01$ctl01$ctl01$ctl00$ctl00" class="ImageWidget" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.PrevPage.gif" onclick="return !ClientControllerReportViewerControl.HandleClientSidePageNav(ClientControllerReportViewerControl.CurrentPage - 1);" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl00.OnNormal();
+								</script><table id="ReportViewerControl_ctl01_ctl01_ctl01_ctl01" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl01.OnNormal();" class="DisabledButton" title="Предыдущая страница" style="display:inline;">
+									<tr>
+										<td><img src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.PrevPageDisabled.gif" alt="Предыдущая страница" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl01_ctl01.OnNormal();
+								</script>
+							</div></td><td class="InterWidgetGroup"></td><td height="28px"><input name="ReportViewerControl$ctl01$ctl01$ctl02" type="text" maxlength="8" size="3" id="ReportViewerControl_ctl01_ctl01_ctl02" disabled="disabled" title="Текущая страница" class="PageNumberText" onkeypress="if (event.keyCode == 10 || event.keyCode == 13) {if (!ClientControllerReportViewerControl.HandleUserTextPageChange(this.value)) {__doPostBack('ReportViewerControl$ctl01$ctl01$ctl02','')} return false;}" /></td><td class="InterWidgetGroup"></td><td height="28px"><span>из</span></td><td class="InterWidgetGroup"></td><td height="28px"><span id="ReportViewerControl_ctl01_ctl01_ctl04">0</span></td><td class="InterWidgetGroup"></td><td height="28px"><div id="ReportViewerControl_ctl01_ctl01_ctl05">
+								<table id="ReportViewerControl_ctl01_ctl01_ctl05_ctl00" onmouseover="HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl00.OnHover();" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl00.OnNormal();" title="Следующая страница" style="display:none;">
+									<tr>
+										<td><input type="image" name="ReportViewerControl$ctl01$ctl01$ctl05$ctl00$ctl00" class="ImageWidget" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.NextPage.gif" onclick="return !ClientControllerReportViewerControl.HandleClientSidePageNav(ClientControllerReportViewerControl.CurrentPage + 1);" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl00.OnNormal();
+								</script><table id="ReportViewerControl_ctl01_ctl01_ctl05_ctl01" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl01.OnNormal();" class="DisabledButton" title="Следующая страница" style="display:inline;">
+									<tr>
+										<td><img src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.NextPageDisabled.gif" alt="Следующая страница" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl05_ctl01.OnNormal();
+								</script>
+							</div></td><td class="InterWidgetGroup"></td><td height="28px"><div id="ReportViewerControl_ctl01_ctl01_ctl06">
+								<table id="ReportViewerControl_ctl01_ctl01_ctl06_ctl00" onmouseover="HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl00.OnHover();" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl00.OnNormal();" title="Последняя страница" style="display:none;">
+									<tr>
+										<td><input type="image" name="ReportViewerControl$ctl01$ctl01$ctl06$ctl00$ctl00" class="ImageWidget" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.LastPage.gif" onclick="return !ClientControllerReportViewerControl.HandleClientSidePageNav(ClientControllerReportViewerControl.TotalPages);" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl00.OnNormal();
+								</script><table id="ReportViewerControl_ctl01_ctl01_ctl06_ctl01" onmouseout="HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl01.OnNormal();" class="DisabledButton" title="Последняя страница" style="display:inline;">
+									<tr>
+										<td><img src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.LastPageDisabled.gif" alt="Последняя страница" border="0" /></td>
+									</tr>
+								</table><script>
+									HoverImageReportViewerControl_ctl01_ctl01_ctl06_ctl01.OnNormal();
+								</script>
+							</div></td>
+						</tr>
+					</table>
+				</div><table cellpadding="0" cellspacing="0" ToolbarSpacer="true" style="display:inline;">
+					<tr>
+						<td class="WidgetSetSpacer ToolbarExport"></td>
+					</tr>
+				</table><div class="ToolbarExport WidgetSet">
+					<table cellpadding="0" cellspacing="0" style="display:inline;">
+						<tr>
+							<td height="28px"><select name="ReportViewerControl$ctl01$ctl05$ctl00" id="ReportViewerControl_ctl01_ctl05_ctl00" title="Форматы экспорта" onChange="ClientToolbarReportViewerControl_ctl01.OnExportFormatChanged();">
+								<option selected="selected" value="Выбрать формат">Выбрать формат</option>
+								<option value="XML">XML-файл с данными отчета</option>
+								<option value="CSV">CSV (разделители-запятые)</option>
+								<option value="IMAGE">Файл TIFF</option>
+								<option value="PDF">Файл Acrobat (PDF)</option>
+								<option value="MHTML">Веб-архив</option>
+								<option value="EXCEL">Excel</option>
+
+							</select></td><td class="InterWidgetGroup"></td><td height="28px"><a id="ReportViewerControl_ctl01_ctl05_ctl01" onclick="if (document.getElementById('ReportViewerControl_ctl01_ctl05_ctl00').selectedIndex == 0) return false; if (!ClientToolbarReportViewerControl_ctl01.HandleClientSideExport()) __doPostBack('ReportViewerControl$ctl01$ctl05$ctl01','');return false;" onmouseover="TextLinkReportViewerControl_ctl01_ctl05_ctl01.OnLinkHover();" onmouseout="TextLinkReportViewerControl_ctl01_ctl05_ctl01.OnLinkNormal();" class="DisabledLink" title="Экспорт" href="#">Экспорт</a></td>
+						</tr>
+					</table>
+				</div><table cellpadding="0" cellspacing="0" ToolbarSpacer="true" style="display:inline;">
+					<tr>
+						<td class="WidgetSetSpacer ToolbarRefresh"></td>
+					</tr>
+				</table><div class="ToolbarRefresh WidgetSet">
+					<table cellpadding="0" cellspacing="0" style="display:inline;">
+						<tr>
+							<td height="28px"><table id="ReportViewerControl_ctl01_ctl06_ctl00" onmouseover="HoverImageReportViewerControl_ctl01_ctl06_ctl00.OnHover();" onmouseout="HoverImageReportViewerControl_ctl01_ctl06_ctl00.OnNormal();" title="Обновить" style="display:inline;">
+								<tr>
+									<td><input type="image" name="ReportViewerControl$ctl01$ctl06$ctl00$ctl00" class="ImageWidget" src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=Resource&amp;Version=9.00.1399.00&amp;Name=Icons.Refresh.gif" onclick="ClientToolbarReportViewerControl_ctl01.m_clientController.ActionHandler('Refresh', null);return false;" border="0" /></td>
+								</tr>
+							</table><script>
+								HoverImageReportViewerControl_ctl01_ctl06_ctl00.OnNormal();
+							</script></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div></td>
+	</tr><tr>
+		<td width="100%" height="100%"><input type="hidden" name="ReportViewerControl$ctl04" id="ReportViewerControl_ctl04" /><input type="hidden" name="ReportViewerControl$ctl05" id="ReportViewerControl_ctl05" /><input type="hidden" name="ReportViewerControl$ctl06" id="ReportViewerControl_ctl06" value="0" /><input type="hidden" name="ReportViewerControl$ctl07" id="ReportViewerControl_ctl07" value="0" /><noscript>
+			&nbsp;Обозреватель не поддерживает выполнение сценариев, или выполнение сценариев запрещено в его настройках. Щелкните&nbsp;<a href="/ReportServer?%2freports%2f%d0%a0%d0%b0%d1%81%d0%bf%d0%b8%d1%81%d0%b0%d0%bd%d0%b8%d0%b5+%d1%8f%d0%b7%d1%8b%d0%ba%d0%be%d0%b2%d0%be%d0%b9+%d0%b3%d1%80%d1%83%d0%bf%d0%bf%d1%8b&amp;rs:Command=Render&amp;rs:Format=HTML4.0&amp;rc:LinkTarget=_top&amp;rc:Javascript=false&amp;rc:Toolbar=false">здесь</a>&nbsp;для просмотра отчета без выполнения сценариев.
+		</noscript><iframe src="/ReportServer/Reserved.ReportViewerWebControl.axd?OpType=DocMapReport&amp;ClientController=ClientControllerReportViewerControl&amp;ReportUrl=%2fReportServer%2fReserved.ReportViewerWebControl.axd%3fExecutionID%3duor4uy550uwrts45u1gaio55%26ControlID%3dfa6cf93f-033b-443c-8c7e-af7cff82354b%26Culture%3d1049%26UICulture%3d25%26ReportStack%3d1%26OpType%3dReportArea%26Controller%3dClientControllerReportViewerControl%26PageNumber%3d1%26ZoomMode%3dPercent%26ZoomPct%3d100%26ReloadDocMap%3dtrue%26EnableFindNext%3dFalse%26LinkTarget%3d_top" frameborder="0" class="DocMapAndReportFrame" id="ReportFrameReportViewerControl" name="ReportFrameReportViewerControl" style="display:inline;">
+
+		</iframe></td>
+	</tr>
+</table><script type="text/javascript">
+	ClientControllerReportViewerControl.ShowInitialWaitFrame();
+
+</script>
+  
+
+<script type="text/javascript">
+//<![CDATA[
+function AutoPostBackReportViewerControl_ctl00_ctl03() {__doPostBack('ReportViewerControl$ctl00$ctl03','')} var DDClassReportViewerControl_ctl00_ctl03 = new DropDownParamClass('DDClassReportViewerControl_ctl00_ctl03', 'ReportViewerControl_ctl00_ctl03_ctl00', 'ReportViewerControl_ctl00_ctl03_ctl02', ClientParamsReportViewerControl_ctl00, AutoPostBackReportViewerControl_ctl00_ctl03);//]]>
+</script>
+</form>
+ </body>
+</html>
