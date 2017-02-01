@@ -2,9 +2,7 @@
 
 import urllib
 import urllib2
-from models import Node
 
-import lxml.html as html
 
 base_url = 'http://rs.mgimo.ru'
 url = base_url + "/ReportServer/Pages/ReportViewer.aspx?%2freports%2f%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5+%D1%8F%D0%B7%D1%8B%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9+%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D1%8B&rs:Command=Render"
@@ -39,6 +37,7 @@ def _find_export_url(data):
         fow += 1
     return data[back + 1: fow]
 
+
 def _render_payload(obj, data):
     payload = (
         (r'__EVENTTARGET', r'ReportViewerControl$ctl00$ctl05$ctl00'),
@@ -69,7 +68,7 @@ def _scrape_last_page(obj):
         payload = _render_payload(obj, data)
         encodedFields = urllib.urlencode(payload)
         req = urllib2.Request(url, encodedFields, headers)
-        f = urllib2.urlopen(req)  # that's the actual call to the http site.
+        f = urllib2.urlopen(req)
         data = f.read()
     return data
 
@@ -82,26 +81,15 @@ def scrape_timetable(obj):
     return data
 
 
-def scrape_tree():
-    pass
+page = scrape_timetable({
+    'date': '31.10.2016',
+    'program_type': '1',
+    'faculty': '1',
+    'department': '1',
+    'grade': '1',
+    'academic_group': '1',
+    'lang_group': '1',
+})
 
-# page = _scrape_last_page({
-#     'date': '31.10.2016',
-#     'program_type': '1',
-#     'faculty': '1',
-#     'department': '1',
-#     'grade': '1',
-#     'academic_group': '1',
-#     'lang_group': '1',
-# })
-#
-# f = open('tmp.html', 'w')
-# f.write(page)
-# f.close()
 
-f = open('tmp.html', 'r')
-parsed = html.fromstring(f.read())
-f.close()
-e = parsed.xpath("//select[@name='ReportViewerControl$ctl00$ctl07$ctl00']")
-for i in e:
-    print(str(i))
+
