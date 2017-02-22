@@ -3,7 +3,7 @@
 import urllib
 import urllib2
 import json
-
+import logging
 import lxml.html as html
 
 base_url = 'http://rs.mgimo.ru'
@@ -42,6 +42,7 @@ def _render_payload(page, date, vals):
         (r'__LASTFOCUS', ''),
         (r'__EVENTVALIDATION', _find_eventvalid(page)),
          (r'ReportViewerControl$ctl00$ctl03$ctl00', date),
+        (r'ReportViewerControl$ctl00$ctl00', r'Просмотр отчета'),
         (r'ReportViewerControl$ctl04', ''),
         (r'ReportViewerControl$ctl05', ''),
         (r'ReportViewerControl$ctl06', r'1'),
@@ -50,6 +51,16 @@ def _render_payload(page, date, vals):
     for val in vals:
         payload.append((val[0], val[1]))
     return tuple(payload)
+
+
+def _find_export_url(data):
+    val = 'OpType=Export'
+    back = fow = data.index(val)
+    while data[back] != '"':
+        back -= 1
+    while data[fow] != '"':
+        fow += 1
+    return data[back + 1: fow]
 
 
 def _extract_options(page, select_name):
@@ -68,15 +79,27 @@ def _insert(vals, obj, options):
     for i in vals:
         target = target[i[1]]
     for option in options:
-        target[option[0]] = {'name': option[1].replace('"', '\"')}
+        target[option[0]] = {'name': option[1].replace('"', '\\"')}
+
+
+def _insert_timetable(vals, obj, page):
+    target = obj
+    for i in vals:
+        target = target[i[1]]
+    export_url = base_url + _find_export_url(page) + 'XML'
+    f = urllib2.urlopen(export_url)
+    timetable = f.read()
+    target['timetable'] = str(timetable).replace('"', '\\"')
 
 
 def _scrape(select_ind, page, vals, date, obj):
+    if select_ind == len(selects):
+        _insert_timetable(vals, obj, page)
+        return
     select = selects[select_ind]
     options = _extract_options(page, select)
+    print(repr(options).decode('unicode-escape'))
     _insert(vals, obj, options)
-    if select_ind == len(selects) - 1:
-        return
     new_vals = list(vals)
     new_vals.append(['', ''])
     for option in options:
@@ -90,13 +113,18 @@ def _scrape(select_ind, page, vals, date, obj):
         _scrape(select_ind + 1, page, new_vals, date, obj)
 
 
-def scrape_tree():
+def scrape_tree(date):
     obj = {}
     page = urllib.urlopen(url).read()
-    _scrape(0, page, [], '31.01.2017', obj)
+    _scrape(0, page, [], date, obj)
+    return obj
+
+
+def to_file(obj):
     with open('tree.json', 'w') as outfile:
         s = json.dumps(obj).decode('unicode-escape')
         outfile.write(s.encode('utf8'))
 
-scrape_tree()
 
+obj = scrape_tree('14.02.2017')
+to_file(obj)
