@@ -1,18 +1,17 @@
-from lxml import etree
-from StringIO import StringIO
+from xml.etree import ElementTree as etree
 import json
+import logging
+import re
 
 
 def xml_to_json(text):
     out = {}
-    utf8_parser = etree.XMLParser(recover=True, encoding='utf8')
-    #text = text.decode('utf8')
-    root = etree.fromstring(text, parser=utf8_parser)
-    dates = root.xpath("/*[name()='Report']/*[name()='list2']")[0][0].attrib['textbox480']
+    text = re.sub(' (xmlns|xmlns:xsi|xsi:schemaLocation)=".+?"', '', text, count=1)
+    root = etree.fromstring(text)
+    dates = root.findall("./list2")[0][0].attrib['textbox480']
     out['from'], out['to'] = dates.split(' - ')
-    out['semester'] = root.xpath("/*[name()='Report']/*[name()='list5']")[0][0].attrib['textbox474']
-
-    table = root.xpath("/*[name()='Report']/*[name()='table1']/*[name()='Detail_Collection']")
+    out['semester'] = root.findall("./list5")[0][0].attrib['textbox474']
+    table = root.findall("./table1/Detail_Collection")
     pair = 1
     for element in table[0]:
         day = 1
@@ -60,6 +59,6 @@ def tree_to_json(tree):
 #         s = json.dumps(obj).decode('unicode-escape')
 #         outfile.write(s.encode('utf8'))
 
-with open('tree1.json', 'r') as infile:
-    obj = json.loads(infile.read())
-    print(json.dumps(obj['2']['3']['1']['1']['1']['1']['name']).decode('unicode-escape'))
+# with open('tree1.json', 'r') as infile:
+#     obj = json.loads(infile.read())
+#     print(json.dumps(obj['2']['3']['1']['1']['1']['1']['name']).decode('unicode-escape'))
