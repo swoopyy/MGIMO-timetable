@@ -1,4 +1,6 @@
 import settingsReducer from './settingsReducer';
+import tabBarReducer from './tabBarReducer';
 export {
-  settingsReducer
+  settingsReducer,
+  tabBarReducer,
 };
