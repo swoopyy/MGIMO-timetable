@@ -5,14 +5,14 @@ const UserSchema = {
   properties: {
     id: 'string',
     is_pro: 'bool',
-    program: 'int',
-    faculty: 'int',
-    department: 'int',
-    course: 'int',
-    academic_group: 'int',
-    lang_group: 'int',
+    program: 'string',
+    faculty: 'string',
+    department: 'string',
+    course: 'string',
+    academic_group: 'string',
+    lang_group: 'string',
   }
 };
 
-let realm = new Realm({schema: [UserSchema], schemaVersion: 2});
+let realm = new Realm({schema: [UserSchema], schemaVersion: 3});
 export default realm;
