@@ -6,6 +6,7 @@ import {
   View,
 } from 'react-native';
 import Settings from './settings';
+import Timetable from './timetable';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = StyleSheet.create({
@@ -24,9 +25,16 @@ export default class ControllerIOS extends Component {
 
   _renderContent() {
     if (this.props.selectedTab === 'settings') {
-      return <Settings {...this.props.settingsProps}/>;
+      return (<Settings
+                {...this.props.settingsProps}
+                {...this.props.sdkActions}
+                {...this.props.sdkReducer}
+                />);
     } else if (this.props.selectedTab === 'timetable') {
-      return <View/>;
+      return (<Timetable
+                {...this.props.sdkActions}
+                {...this.props.sdkReducer}
+                />);
     }
   }
 
