@@ -21,7 +21,7 @@ class UserMessage(messages.Message):
 
 
 class RequestTimetableMessage(messages.Message):
-    id = messages.IntegerField(1)
+    id = messages.StringField(1)
     date = messages.IntegerField(2)
     cached = messages.BooleanField(3, default=False)
 
@@ -59,15 +59,11 @@ class Api(remote.Service):
         http_method='GET'
     )
     def get_timetable(self, request):
-
         user = User.get_by_id(str(request.id))
-        logging.debug("id")
-        logging.debug(request.id)
-        # logging.debug("user", user)
-        # if not user:
-        #     raise messages.Error()
+        logging.debug("DATE")
+        logging.debug(request.date)
         date = datetime.datetime.fromtimestamp(
-            int(request.date)
+            int(request.date) / 1000
         ).strftime('%d.%m.%Y')
         logging.debug("date")
         logging.debug(str(date))
