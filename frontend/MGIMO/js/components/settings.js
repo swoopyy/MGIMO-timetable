@@ -63,23 +63,59 @@ export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      program: this._extractOptions(tree),
+      program: [],
       faculty: [],
       department: [],
       course: [],
       academic_group: [],
       lang_group: [],
     }
+
+  }
+
+  componentWillMount() {
+      this._setInitialState();
+  }
+
+  _setInitialState() {
+    let _tree = tree;
+    const { program, faculty, department, course, academic_group, lang_group } = this.props;
+    this.setState({program: this._extractOptions(_tree)});
+
+    if (program) {
+      _tree = _tree[program];
+      this.setState({faculty: this._extractOptions(_tree)});
+    }
+
+    if (faculty) {
+      _tree = _tree[faculty];
+      this.setState({department: this._extractOptions(_tree)});
+    }
+
+    if (department) {
+      _tree = _tree[department];
+      this.setState({course: this._extractOptions(_tree)});
+    }
+
+    if (course) {
+      _tree = _tree[course];
+      this.setState({academic_group: this._extractOptions(_tree)});
+    }
+
+    if (academic_group) {
+        _tree = _tree[academic_group]
+        this.setState({lang_group: this._extractOptions(_tree)});
+    }
   }
   _extractOptions(tree) {
     if (Platform.OS === 'android') {
-      var out = [{key: 0, label: 'Не выбрано'}];
+      var out = [{key: '0', label: 'Не выбрано'}];
     } else {
       var out = [];
     }
     for (var key in tree){
       if (key !== 'name') {
-        out.push({key: parseInt(key), label: tree[key].name});
+        out.push({key: key, label: tree[key].name});
       }
     }
     return out;
@@ -159,7 +195,8 @@ export default class Settings extends Component {
   }
   renderAndroid() {
     const { program, faculty, department, course, group, academic_group, lang_group } = this.props;
-    const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup, selectAcademicGroup, selectLangGroup } = this.props;
+    const { selectProgram, selectFaculty, selectDepartment, selectCourse,
+            selectGroup, selectAcademicGroup, selectLangGroup } = this.props;
     return (
        <View style={styles.container}>
           <Picker
@@ -202,9 +239,11 @@ export default class Settings extends Component {
   }
 
   renderIos() {
+
     const { program, faculty, department, course, group, academic_group, lang_group } = this.props;
     let user = { program, faculty, department, course, academic_group, lang_group};
-    const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup, selectAcademicGroup, selectLangGroup, save, deselectAll } = this.props;
+    const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup,
+            selectAcademicGroup, selectLangGroup, save_and_register, deselectAll} = this.props;
     return (
         <View style={styles.container}>
           <ModalPicker
@@ -270,7 +309,10 @@ export default class Settings extends Component {
               style={styles.modalPicker}
               initValue={"Языковая группа"}
               data={this.state.lang_group}
-              onChange={(x) => { selectLangGroup(x.key); save({...user, lang_group: x.key});}}>
+              onChange={(x) => {
+                selectLangGroup(x.key);
+                save_and_register({...user, lang_group: x.key});
+              }}>
               <TextInput
                          style={styles.textInput}
                          editable={false}
@@ -283,8 +325,7 @@ export default class Settings extends Component {
                   style={styles.button}
                   onPress={() => {deselectAll()}}
                   title="Сбросить"
-                  color="#ff3b30"
-                  accessibilityLabel="Learn more about this purple button"/>
+                  color="#ff3b30"/>
               </View>
             }
        </View>
