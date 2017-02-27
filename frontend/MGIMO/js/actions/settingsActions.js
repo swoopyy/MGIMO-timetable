@@ -39,3 +39,16 @@ export function selectLangGroup(group) {
     group
   }
 }
+
+export function deselectAll() {
+  return {
+    type: 'DESELECT_ALL'
+  }
+}
+
+export function save(user) {
+  return {
+    type: 'SAVE',
+    ...user,
+  }
+}

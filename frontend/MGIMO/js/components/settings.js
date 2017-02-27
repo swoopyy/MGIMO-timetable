@@ -1,26 +1,44 @@
 import React, { Component, PropTypes } from 'react';
-import { Text, View, StyleSheet, Platform, Picker, TextInput, Image } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Platform,
+  Picker,
+  TextInput,
+  Image,
+  Button
+} from 'react-native';
 import ModalPicker from 'react-native-modal-picker'
-
 const tree = require('../assets/tree1');
 
 const styles = StyleSheet.create({
   conatainer: {
     flex: 1,
     justifyContent: 'space-around',
-    padding: 50,
-    resizeMode: 'stretch'
+    alignItems: 'center',
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+    backgroundColor: '#efeff4'
   },
   textInput: {
-    borderWidth:1,
-    borderColor:'#ccc',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 10,
     padding:10,
     height:40
   },
   modalPicker: {
     marginTop: 30,
-    marginRight: 20,
-    marginLeft: 20,
+    marginRight: 8,
+    marginLeft: 8,
+  },
+
+  button: {
+    marginTop: 30,
+    marginRight: 8,
+    marginLeft: 8,
   }
 });
 
@@ -143,7 +161,7 @@ export default class Settings extends Component {
     const { program, faculty, department, course, group, academic_group, lang_group } = this.props;
     const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup, selectAcademicGroup, selectLangGroup } = this.props;
     return (
-       <Image source={require('../assets/mgimo.jpg')} style={styles.container}>
+       <View style={styles.container}>
           <Picker
             selectedValue={program}
             onValueChange={(x) => selectProgram(x)}>
@@ -179,15 +197,16 @@ export default class Settings extends Component {
               onValueChange={(x) => selectLangGroup(x)}>
               {this.state.lang_group.map((item) => <Picker.Item key={item.key} label={item.label} value={item.key} />)}
             </Picker>}
-       </Image>
+       </View>
     );
   }
 
   renderIos() {
     const { program, faculty, department, course, group, academic_group, lang_group } = this.props;
-    const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup, selectAcademicGroup, selectLangGroup } = this.props;
+    let user = { program, faculty, department, course, academic_group, lang_group};
+    const { selectProgram, selectFaculty, selectDepartment, selectCourse, selectGroup, selectAcademicGroup, selectLangGroup, save, deselectAll } = this.props;
     return (
-        <Image source={require('../assets/mgimo.jpg')} style={styles.container}>
+        <View style={styles.container}>
           <ModalPicker
             style={styles.modalPicker}
             data={this.state.program}
@@ -251,22 +270,31 @@ export default class Settings extends Component {
               style={styles.modalPicker}
               initValue={"Языковая группа"}
               data={this.state.lang_group}
-              onChange={(x) => selectLangGroup(x.key)}>
+              onChange={(x) => { selectLangGroup(x.key); save({...user, lang_group: x.key});}}>
               <TextInput
                          style={styles.textInput}
                          editable={false}
                          placeholder="Языковая группа"
                          value={this.getLabel(lang_group, this.state.lang_group)} />
             </ModalPicker>}
-       </Image>
+            {lang_group &&
+              <View style={styles.button}>
+                <Button
+                  style={styles.button}
+                  onPress={() => {deselectAll()}}
+                  title="Сбросить"
+                  color="#ff3b30"
+                  accessibilityLabel="Learn more about this purple button"/>
+              </View>
+            }
+       </View>
     );
   }
   render() {
     if (Platform.OS === 'ios') {
-      console.log('ios');
       return this.renderIos();
     } else {
-      return this.renderIos();
+      return this.renderAndroid();
     }
   }
 }
