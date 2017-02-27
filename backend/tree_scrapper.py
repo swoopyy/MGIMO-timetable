@@ -98,7 +98,6 @@ def _scrape(select_ind, page, vals, date, obj):
         return
     select = selects[select_ind]
     options = _extract_options(page, select)
-    print(repr(options).decode('unicode-escape'))
     _insert(vals, obj, options)
     new_vals = list(vals)
     new_vals.append(['', ''])
@@ -126,5 +125,5 @@ def to_file(obj):
         outfile.write(s.encode('utf8'))
 
 
-obj = scrape_tree('14.02.2017')
-to_file(obj)
+# obj = scrape_tree('14.02.2017')
+# to_file(obj)
