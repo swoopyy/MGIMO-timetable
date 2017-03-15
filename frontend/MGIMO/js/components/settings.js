@@ -9,7 +9,8 @@ import {
   Image,
   Button
 } from 'react-native';
-import ModalPicker from 'react-native-modal-picker'
+import ModalPicker from 'react-native-modal-picker';
+import { mainColor, backgroundColor } from '../constants';
 const tree = require('../assets/tree1');
 
 const styles = StyleSheet.create({
@@ -20,11 +21,11 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'contain',
-    backgroundColor: '#efeff4'
+    backgroundColor: backgroundColor
   },
   textInput: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: mainColor,
     borderRadius: 10,
     padding:10,
     height:40
@@ -196,7 +197,7 @@ export default class Settings extends Component {
   renderAndroid() {
     const { program, faculty, department, course, group, academic_group, lang_group } = this.props;
     const { selectProgram, selectFaculty, selectDepartment, selectCourse,
-            selectGroup, selectAcademicGroup, selectLangGroup } = this.props;
+             selectAcademicGroup, selectLangGroup } = this.props;
     return (
        <View style={styles.container}>
           <Picker

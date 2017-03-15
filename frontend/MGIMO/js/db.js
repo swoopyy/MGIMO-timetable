@@ -1,4 +1,4 @@
-var Realm = require('realm');
+let Realm = require('realm');
 
 const UserSchema = {
   name: 'User',
@@ -14,5 +14,12 @@ const UserSchema = {
   }
 };
 
-let realm = new Realm({schema: [UserSchema], schemaVersion: 3});
+const TimetableSchema = {
+  name: "Timetable",
+  properties: {
+    timetable: 'string',
+  }
+};
+
+let realm = new Realm({schema: [UserSchema, TimetableSchema], schemaVersion: 4});
 export default realm;

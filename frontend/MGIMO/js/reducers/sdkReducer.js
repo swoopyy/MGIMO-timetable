@@ -10,12 +10,17 @@ export default function sdk(state = initialState, action = {}) {
     case 'GOT_TIMETABLE':
       return {
         ...state,
-        timetable: action.timetable
+        timetable: JSON.parse(action.timetable)
       };
     case 'NO_INTERNET':
       return {
         ...state,
         is_internet: false
+      }
+    case 'RESET_TIMETABLE':
+      return {
+        ...state,
+        timetable: null,
       }
     default:
       return state;
