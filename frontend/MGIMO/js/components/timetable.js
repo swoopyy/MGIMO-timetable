@@ -158,7 +158,8 @@ export default class Timetable extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.timetable) {
+        console.log("nextProps", nextProps.timetable);
+        if (nextProps.timetable && nextProps.timetable !== this.props.timetable) {
             this.setState({refreshing: false});
             setTimeout(this.scrollTo.bind(this), 500);
         }

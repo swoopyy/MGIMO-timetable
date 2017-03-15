@@ -24,11 +24,15 @@ export function get_timetable(is_cached, refresh) {
             id: user.id,
         };
         let timetable = realm.objects('Timetable')[0];
+        console.log('Timetable', timetable);
+        console.log('User', user);
         if (!timetable || refresh) {
             return sdk.get_timetable(data)
                 .then(
                     result => {
+                        console.log("RESULT", result.timetable);
                         realm.write(() => {
+                            realm.delete(realm.objects('Timetable'));
                             realm.create('Timetable', {
                                 timetable: result.timetable,
                             })

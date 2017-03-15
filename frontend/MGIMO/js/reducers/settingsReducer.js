@@ -1,7 +1,7 @@
 import realm from '../db';
 const uuidV1 = require('uuid/v1');
 
-var initialState = {
+let initialState = {
     program: null,
     faculty: null,
     department: null,
@@ -80,7 +80,14 @@ export default function settings(state = initialState, action = {}) {
         lang_group: action.group
       }
     case "DESELECT_ALL":
-      return initialState;
+      return {
+          program: null,
+          faculty: null,
+          department: null,
+          course: null,
+          lang_group: null,
+          academic_group: null
+      };
     default:
       return state;
   }
