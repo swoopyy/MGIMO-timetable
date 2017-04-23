@@ -94,7 +94,8 @@ def _insert_timetable(vals, obj, page):
 
 def _scrape(select_ind, page, vals, date, obj):
     if select_ind == len(selects):
-        _insert_timetable(vals, obj, page)
+       # print(vals)
+        #_insert_timetable(vals, obj, page)
         return
     select = selects[select_ind]
     options = _extract_options(page, select)
@@ -120,10 +121,10 @@ def scrape_tree(date):
 
 
 def to_file(obj):
-    with open('tree.json', 'w') as outfile:
+    with open('tree20-03.json', 'w') as outfile:
         s = json.dumps(obj).decode('unicode-escape')
         outfile.write(s.encode('utf8'))
 
 
-# obj = scrape_tree('14.02.2017')
-# to_file(obj)
+obj = scrape_tree('14.02.2017')
+to_file(obj)

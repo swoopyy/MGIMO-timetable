@@ -21,3 +21,13 @@ export function get_timetable(data) {
          throw "err";
        });
 }
+
+export function get_tree() {
+    let url = producer.get_tree();
+    return fetch(url)
+        .then(r => {
+            if (r.status === 200) {
+                return r.json();
+            }
+        });
+}

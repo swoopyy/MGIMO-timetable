@@ -1,54 +1,73 @@
 import * as sdk  from '../sdk/index';
-import realm from '../db';
+import realm from '../db/schemas';
 const uuidV1 = require('uuid/v1');
+import * as handlers from '../db/handlers';
 
+export function getTree() {
+    return (dispatch, getState) => {
+        dispatch({type: 'GETTING_TREE'});
+        return sdk.get_tree()
+            .then(
+                result => {
+                    let decodedTree = unescape(result.tree);
+                    handlers.updateTree(decodedTree);
+                    dispatch({type: 'GOT_TREE', tree: JSON.parse(decodedTree)})
+                }
+            )
+            .catch(error => dispatch({type: 'ERROR', error}))
+    }
+}
 export function save_and_register(data) {
     return (dispatch, getState) => {
-        let user = _save(data);
+        dispatch({type: 'USER_REGISTERING'});
+        let user = handlers.getUser();
+        let is_pro;
+        let id;
+        if (!user) {
+            is_pro = false;
+            id = uuidV1();
+        } else {
+            is_pro = user.is_pro;
+            id = user.id;
+        }
+        handlers.deleteUser();
+        handlers.commitUser({
+            ...data,
+            is_pro,
+            id,
+        });
+        user = handlers.getUser();
         return sdk.register(user)
             .then(
                 result => {
                     dispatch({type: 'USER_REGISTERED'});
                 }
             )
-            .catch(error => dispatch({type: 'NO_INTERNET'}));
-    }
+            .catch(error => dispatch({type: 'ERROR', error}));
+     }
 }
 
 export function get_timetable(is_cached, refresh) {
     return (dispatch, getState) => {
-        let user = realm.objects('User')[0];
+        dispatch({type: 'GETTING_TIMETABLE'});
+        let user = handlers.getUser();
+        let timetable = handlers.getTimetable();
         let data = {
             cached: is_cached,
             date: new Date().getTime(),
             id: user.id,
         };
-        let timetable = realm.objects('Timetable')[0];
-        console.log('Timetable', timetable);
-        console.log('User', user);
         if (!timetable || refresh) {
             return sdk.get_timetable(data)
                 .then(
                     result => {
-                        console.log("RESULT", result.timetable);
-                        realm.write(() => {
-                            realm.delete(realm.objects('Timetable'));
-                            realm.create('Timetable', {
-                                timetable: result.timetable,
-                            })
-                        });
-                        dispatch({
-                            type: 'GOT_TIMETABLE',
-                            timetable: result.timetable
-                        });
+                        handlers.updateTimetable(result.timetable)
+                        dispatch({type: 'GOT_TIMETABLE', timetable: JSON.parse(result.timetable)});
                     }
                 )
-                .catch(error => dispatch({type: 'NO_INTERNET'}));
+                .catch(error => dispatch({type: 'ERROR', error}));
         } else {
-            dispatch({
-                    type: 'GOT_TIMETABLE',
-                    timetable: timetable.timetable,
-                });
+            dispatch({type: 'GOT_TIMETABLE', timetable: JSON.parse(timetable.timetable)});
         }
     }
 }
@@ -59,26 +78,4 @@ export function reset_timetable() {
     }
 }
 
-function _save(data) {
-    let user = realm.objects('User');
-    if (user.length === 0) {
-        realm.write(() => {
-            realm.create('User', {
-                ...data,
-                is_pro: false,
-                id: uuidV1(),
-            });
-        });
-    } else {
-        realm.write(() => {
-            user[0].program = data.program;
-            user[0].faculty = data.faculty;
-            user[0].department = data.department;
-            user[0].course = data.course;
-            user[0].group = data.group;
-            user[0].academic_group = data.academic_group;
-            user[0].lang_group = data.lang_group;
-        });
-    }
-    return user[0];
-}
+

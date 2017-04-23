@@ -23,8 +23,8 @@ const romainanNumbers = [
     'X'
 ];
 
-const lectionColor = 'rgb(90, 200, 250)';//'#4CAF50'//'#82B1FF'; //; //ios
-const seminarColor = 'rgb(255, 59, 48)';//'#F44336';//'#FFEE58'; //;
+const lectionColor = 'rgb(90, 200, 250)';
+const seminarColor = 'rgb(255, 59, 48)';
 export {
     mainColor,
     backgroundColor,

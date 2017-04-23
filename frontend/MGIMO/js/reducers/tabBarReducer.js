@@ -1,6 +1,7 @@
-import realm from '../db';
+import {getTimetable} from '../db/handlers';
 let initialState = {};
-if (realm.objects('Timetable')[0]) {
+let timetable = getTimetable();
+if (timetable) {
     initialState = {
         selectedTab: 'timetable',
     };
@@ -16,7 +17,7 @@ export default function tabBarReducer(state = initialState, action = {}) {
             return {
                 ...state,
                 selectedTab: action.tab,
-            }
+            };
         default:
             return state;
     }

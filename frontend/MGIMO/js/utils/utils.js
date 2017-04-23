@@ -31,7 +31,6 @@ export function enhanceTimetable(timetable) {
         let day = processDay(timetable[i + '']);
         days.push(day);
     }
-    console.log("DAYS", days);
     return days;
 }
 

@@ -3,8 +3,6 @@ version: 1
 runtime: python27
 api_version: 1
 threadsafe: yes
-manual_scaling:
-  instances: 1
 
 handlers:
 - url: /favicon\.ico
@@ -17,6 +15,9 @@ handlers:
 - url: /_ah/queue/deferred
   script: google.appengine.ext.deferred.deferred.application
   login: admin
+
+- url: .*
+  script: main.app
 
 builtins:
 - deferred: on

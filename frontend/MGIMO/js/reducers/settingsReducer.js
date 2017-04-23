@@ -1,4 +1,4 @@
-import realm from '../db';
+import {getUser} from '../db/handlers';
 const uuidV1 = require('uuid/v1');
 
 let initialState = {
@@ -9,9 +9,9 @@ let initialState = {
     lang_group: null,
     academic_group: null
 };
-let users = realm.objects('User');
-if (users.length !== 0) {
-  initialState = {...users[0]};
+let user = getUser();
+if (user) {
+  initialState = {...user};
 }
 
 export default function settings(state = initialState, action = {}) {
@@ -28,7 +28,7 @@ export default function settings(state = initialState, action = {}) {
           course: null,
           lang_group: null,
           academic_group: null
-      }
+      };
     case "SELECT_FACULTY":
       if (action.faculty == '-1') {
         return state;
@@ -40,7 +40,7 @@ export default function settings(state = initialState, action = {}) {
         course: null,
         lang_group: null,
         academic_group: null
-      }
+      };
     case "SELECT_DEPARTMENT":
       if (action.department == '-1') {
         return state;
@@ -51,7 +51,7 @@ export default function settings(state = initialState, action = {}) {
         course: null,
         lang_group: null,
         academic_group: null
-      }
+      };
     case "SELECT_COURSE":
       if (action.course == '-1') {
         return state;
@@ -61,7 +61,7 @@ export default function settings(state = initialState, action = {}) {
         course: action.course,
         lang_group: null,
         academic_group: null
-      }
+      };
     case "SELECT_ACADEMIC_GROUP":
       if (action.group == '-1') {
         return state;
@@ -70,7 +70,7 @@ export default function settings(state = initialState, action = {}) {
         ...state,
         academic_group: action.group,
         lang_group: null
-      }
+      };
     case "SELECT_LANG_GROUP":
       if (action.group == '-1') {
         return state;
@@ -78,7 +78,7 @@ export default function settings(state = initialState, action = {}) {
       return {
         ...state,
         lang_group: action.group
-      }
+      };
     case "DESELECT_ALL":
       return {
           program: null,

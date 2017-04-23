@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from xml.etree import ElementTree as etree
 import json
 import logging
@@ -44,11 +45,10 @@ def tree_to_json(tree):
         elif i != "name":
             tree_to_json(tree[i])
 
-
-
 # text = open('test.xml').read()
 # obj = xml_to_json(text)
-# with open('tree3.json', 'w') as outfile:
+# print(json.dumps(obj).decode('unicode-escape'))
+# with open('timetable.json', 'w') as outfile:
 #     s = json.dumps(obj).decode('unicode-escape')
 #     outfile.write(s.encode('utf8'))
 
@@ -59,6 +59,7 @@ def tree_to_json(tree):
 #         s = json.dumps(obj).decode('unicode-escape')
 #         outfile.write(s.encode('utf8'))
 
-# with open('tree1.json', 'r') as infile:
+# with open('tree.json', 'r') as infile:
 #     obj = json.loads(infile.read())
-#     print(json.dumps(obj['2']['3']['1']['1']['1']['1']['name']).decode('unicode-escape'))
+#     print(json.dumps(obj['2']['3']['1']['1']['1']['1']['timetable']).decode('unicode-escape')[1:])
+#     print(xml_to_json(json.dumps(obj['2']['3']['1']['1']['1']['1']['timetable']).decode('unicode-escape')[1:]))

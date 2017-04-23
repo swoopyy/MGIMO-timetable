@@ -1,6 +1,5 @@
 const root = "https://mgimo-timetable.appspot.com/_ah/api/mgimo/v1";
 export default producer = {
-
   register: (data) => {
     let params = 'id=' + data.id + '&' +
             'program_type=' + data.program + '&' +
@@ -18,5 +17,9 @@ export default producer = {
                  'date=' + data.date + '&' +
                  'cached=' + data.cached + '&';
     return root + '/timetable?' + params;
+  },
+
+  get_tree: () => {
+      return root + '/tree';
   }
 }

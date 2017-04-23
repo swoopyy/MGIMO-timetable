@@ -6,6 +6,7 @@ export function selectProgram(program) {
 }
 
 export function selectFaculty(faculty) {
+  console.log("Faculty", faculty);
   return {
     type: 'SELECT_FACULTY',
     faculty

@@ -15,13 +15,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class ControllerIOS extends Component {
+export default class NavigationIOS extends Component {
   static propTypes = {
     settingsProps: PropTypes.object,
     timetableProps: PropTypes.object,
     selectTab: PropTypes.func,
     selectedTab: PropTypes.string,
-  }
+  };
 
   _renderContent() {
     if (this.props.selectedTab === 'settings') {
@@ -38,7 +38,12 @@ export default class ControllerIOS extends Component {
     }
   }
 
-  render() {
+    _isUser = () => {
+        return  this.props.settingsProps.academic_group;
+    };
+
+
+    render() {
     return (
       <TabBarIOS
           unselectedTintColor="#8e8e93"
@@ -49,7 +54,7 @@ export default class ControllerIOS extends Component {
             iconName="ios-school-outline"
             selectedIconName="ios-school"
             selected={this.props.selectedTab === 'timetable'}
-            onPress={() => this.props.selectTab('timetable')}>
+            onPress={() => {if (this._isUser()) this.props.selectTab('timetable')}}>
             {this._renderContent()}
           </Icon.TabBarItem>
           <Icon.TabBarItem

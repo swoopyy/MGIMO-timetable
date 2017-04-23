@@ -7,39 +7,51 @@ import {
     Picker,
     TextInput,
     Image,
-    Button
+    Button,
+    ActivityIndicator,
 } from 'react-native';
 import ModalPicker from 'react-native-modal-picker';
-import {mainColor, backgroundColor} from '../constants';
-const tree = require('../assets/tree1');
+import * as constants from '../constants';
+let tree = require('../assets/tree1.json');
 
 const styles = StyleSheet.create({
-    conatainer: {
+    container: {
         flex: 1,
-        justifyContent: 'space-around',
         alignItems: 'center',
-        width: null,
-        height: null,
-        resizeMode: 'contain',
-        backgroundColor: backgroundColor
+        justifyContent: 'flex-start',
+        backgroundColor: constants.backgroundColor,
+    },
+    activityContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: constants.backgroundColor,
     },
     textInput: {
         borderWidth: 1,
-        borderColor: mainColor,
+        borderColor: constants.mainColor,
         borderRadius: 10,
         padding: 10,
         height: 40
     },
     modalPicker: {
         marginTop: 30,
+        height: 40,
+        width: 300,
         marginRight: 8,
         marginLeft: 8,
     },
 
     button: {
-        marginTop: 30,
+        marginTop: 20,
         marginRight: 8,
         marginLeft: 8,
+    },
+
+    itemStyle: {
+        marginBottom: 15,
+        height: 40,
+        width: 300,
     }
 });
 
@@ -59,7 +71,7 @@ export default class Settings extends Component {
         selectGroup: PropTypes.func,
         selectAcademicGroup: PropTypes.func,
         selectLangGroup: PropTypes.func,
-    }
+    };
 
     constructor(props) {
         super(props);
@@ -73,13 +85,20 @@ export default class Settings extends Component {
         }
     }
 
-    componentWillMount() {
-        this._setInitialState();
+    componentDidMount() {
+        this._setInitialState(tree); //todo
+
+        //  this.props.getTree();
     }
 
-    _setInitialState() {
-        let _tree = tree;
-        const {program, faculty, department, course, academic_group, lang_group} = this.props;
+    componentWillReceiveProps(nextProps){
+        //if (nextProps.tree) {
+         //   this._setInitialState(tree); //todo
+      //  }
+    }
+
+    _setInitialState(_tree) {
+        const {program, faculty, department, course, academic_group} = this.props;
         this.setState({program: this._extractOptions(_tree)});
 
         if (program) {
@@ -108,7 +127,7 @@ export default class Settings extends Component {
         }
     }
 
-    _extractOptions(tree) {
+    _extractOptions = (tree) => {
         if (Platform.OS === 'android') {
             var out = [{key: '0', label: 'Не выбрано'}];
         } else {
@@ -122,7 +141,7 @@ export default class Settings extends Component {
         return out;
     }
 
-    _getTree(props) {
+    _getTree = (props) => {
         let out = tree;
         const {program, faculty, department, course, academic_group, lang_group} = props;
         if (program) {
@@ -152,6 +171,15 @@ export default class Settings extends Component {
     }
 
     componentWillReceiveProps(props) {
+        const {navigator} = props;
+        if (props.selectedTab === 'timetable' && this.props.selectedTab !== 'timetable') {
+            let routes = navigator.getCurrentRoutes();
+            if (routes.length > 1) {
+                navigator.pop();
+            } else {
+                navigator.push({name: 'timetable'});
+            }
+        }
         const {program, faculty, department, course, group, academic_group, lang_group} = props;
         if (!faculty) {
             let options = this._extractOptions(this._getTree(props));
@@ -184,7 +212,7 @@ export default class Settings extends Component {
         }
     }
 
-    getLabel(key, data) {
+    getLabel = (key, data) => {
         if (data === null) {
             return null;
         }
@@ -196,60 +224,87 @@ export default class Settings extends Component {
         }
     }
 
-    renderAndroid() {
-        const {program, faculty, department, course, group, academic_group, lang_group} = this.props;
+    renderAndroid = () => {
+        const {program, faculty, department, course, academic_group, lang_group} = this.props;
+        let user = {program, faculty, department, course, academic_group, lang_group};
         const {
             selectProgram, selectFaculty, selectDepartment, selectCourse,
-            selectAcademicGroup, selectLangGroup
+            selectAcademicGroup, selectLangGroup, save_and_register, deselectAll,
+            reset_timetable, get_timetable, is_loading
         } = this.props;
+        if(is_loading) {
+            return (
+                <View style={styles.activityContainer}>
+                    <ActivityIndicator color={constants.mainColor} animating={true} size="large"/>
+                    <Text>Загружаем дерево...</Text>
+                </View>
+            );
+        }
         return (
             <View style={styles.container}>
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={program}
                     onValueChange={(x) => selectProgram(x)}>
                     {this.state.program.map((item) => <Picker.Item key={item.key} label={item.label}
                                                                    value={item.key}/>)}
                 </Picker>
-                {program &&
+                {program && program !== '0' &&
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={faculty}
                     onValueChange={(x) => selectFaculty(x)}>
                     {this.state.faculty.map((item) => <Picker.Item key={item.key} label={item.label}
                                                                    value={item.key}/>)}
                 </Picker>}
-                {faculty &&
+                {faculty && faculty !== '0' &&
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={department}
                     onValueChange={(x) => selectDepartment(x)}>
                     {this.state.department.map((item) => <Picker.Item key={item.key} label={item.label}
                                                                       value={item.key}/>)}
                 </Picker>}
-                {department &&
+                {department && department !== '0' &&
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={course}
                     onValueChange={(x) => selectCourse(x)}>
                     {this.state.course.map((item) => <Picker.Item key={item.key} label={item.label} value={item.key}/>)}
                 </Picker>}
-                {course &&
+                {course && course !== '0' &&
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={academic_group}
                     onValueChange={(x) => selectAcademicGroup(x)}>
                     {this.state.academic_group.map((item) => <Picker.Item key={item.key} label={item.label}
                                                                           value={item.key}/>)}
                 </Picker>}
-                {academic_group &&
+                {academic_group && academic_group !== '0' &&
                 <Picker
+                    style={styles.itemStyle}
                     selectedValue={lang_group}
-                    onValueChange={(x) => selectLangGroup(x)}>
-                    {this.state.lang_group.map((item) => <Picker.Item key={item.key} label={item.label}
-                                                                      value={item.key}/>)}
+                    onValueChange={(x) => {
+                            selectLangGroup(x);
+                            save_and_register({...user, lang_group: x});
+                            reset_timetable();
+                            setTimeout(() => get_timetable(false), 2000);}}>
+                    {this.state.lang_group.map((item) => <Picker.Item key={item.key} label={item.label} value={item.key}/>)}
                 </Picker>}
+                {lang_group && lang_group !== '0' &&
+                    <View style={styles.button}>
+                        <Button
+                            style={styles.button}
+                            onPress={() => {deselectAll(); }}
+                            title="Сбросить"
+                            color="#ff3b30"/>
+                    </View>
+                }
             </View>
         );
-    }
+    };
 
-    renderIos() {
-
+    renderIos = () =>  {
         const {program, faculty, department, course, academic_group, lang_group} = this.props;
         let user = {program, faculty, department, course, academic_group, lang_group};
         const {
@@ -335,14 +390,13 @@ export default class Settings extends Component {
                         value={this.getLabel(lang_group, this.state.lang_group)}/>
                 </ModalPicker>}
                 {lang_group &&
-                <View style={styles.button}>
-                    <Button
-                        style={styles.button}
-                        onPress={() => {deselectAll(); }}
-                        title="Сбросить"
-                        color="#ff3b30"/>
-                </View>
-                }
+                    <View style={styles.button}>
+                        <Button
+                            style={styles.button}
+                            onPress={() => {deselectAll(); }}
+                            title="Сбросить"
+                            color="#ff3b30"/>
+                    </View>}
             </View>
         );
     }

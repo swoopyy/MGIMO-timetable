@@ -21,5 +21,11 @@ const TimetableSchema = {
   }
 };
 
-let realm = new Realm({schema: [UserSchema, TimetableSchema], schemaVersion: 4});
+const TreeSchema = {
+  name: 'Tree',
+  properties: {
+    tree: 'string',
+  }
+};
+let realm = new Realm({schema: [UserSchema, TimetableSchema, TreeSchema], schemaVersion: 5});
 export default realm;

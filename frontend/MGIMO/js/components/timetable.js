@@ -9,7 +9,8 @@ import {
     RefreshControl
 } from 'react-native';
 import * as constants from '../constants';
-import {enhanceTimetable, getRussianName} from '../utils/utils';
+import {getRussianName} from '../utils/utils';
+var equal = require('deep-equal');
 const containerMargin = 20;
 
 const styles = StyleSheet.create({
@@ -134,6 +135,7 @@ export default class Timetable extends Component {
     static propTypes = {
         get_timetable: PropTypes.func,
         timetable: PropTypes.object,
+        is_timetable_loading: PropTypes.bool,
         is_internet: PropTypes.bool,
     }
 
@@ -143,7 +145,7 @@ export default class Timetable extends Component {
 
     scrollTo() {
         let dayOfWeek = new Date().getDay();
-        if (dayOfWeek === 7) {
+        if (dayOfWeek === 0) {
             dayOfWeek = 1;
         }
         let day = constants.daysOfWeek[dayOfWeek - 1];
@@ -158,12 +160,21 @@ export default class Timetable extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("nextProps", nextProps.timetable);
-        if (nextProps.timetable && nextProps.timetable !== this.props.timetable) {
+        const {navigator} = this.props;
+        if (nextProps.selectedTab === 'settings' && this.props.selectedTab !== 'settings') {
+            let routes = navigator.getCurrentRoutes();
+            if (routes.length > 1) {
+                navigator.pop();
+            } else {
+                navigator.push({name: 'settings'});
+            }
+        }
+        if (nextProps.timetable && this.state.refreshing) {
             this.setState({refreshing: false});
             setTimeout(this.scrollTo.bind(this), 500);
         }
     }
+
 
     _getSeminarOrLectionColor(type) {
         if (type === 'Семинар') {
@@ -225,7 +236,7 @@ export default class Timetable extends Component {
         );
     }
 
-    _onRefresh() {
+    _onRefresh()  {
         const {get_timetable} = this.props;
         this.setState({refreshing: true});
         get_timetable(false, true);
@@ -239,8 +250,7 @@ export default class Timetable extends Component {
                 size="large"
             />
         }
-        let enhancedTimetable = enhanceTimetable(timetable);
-        const days = this._getDays(enhancedTimetable);
+        const days = this._getDays(timetable);
         return (
             <ScrollView
                 ref="scroll"
