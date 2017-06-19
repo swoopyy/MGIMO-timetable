@@ -41,3 +41,12 @@ export function getRussianName(name) {
         return name;
     }
 }
+
+export function unescapeStr(s) {
+    let r = /\\u([\d\w]{4})/gi;
+    s = s.replace(/\\x/g, "\\u00");
+    s = s.replace(r, function (match, grp) {
+        return String.fromCharCode(parseInt(grp, 16)); } );
+    let tree = unescape(s);
+    return tree.replace(/\\\\/g,  '\\')
+}

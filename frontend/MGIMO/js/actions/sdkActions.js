@@ -2,19 +2,25 @@ import * as sdk  from '../sdk/index';
 import realm from '../db/schemas';
 const uuidV1 = require('uuid/v1');
 import * as handlers from '../db/handlers';
-
+import {unescapeStr} from '../utils/utils'
 export function getTree() {
     return (dispatch, getState) => {
         dispatch({type: 'GETTING_TREE'});
-        return sdk.get_tree()
-            .then(
-                result => {
-                    let decodedTree = unescape(result.tree);
-                    handlers.updateTree(decodedTree);
-                    dispatch({type: 'GOT_TREE', tree: JSON.parse(decodedTree)})
-                }
-            )
-            .catch(error => dispatch({type: 'ERROR', error}))
+        let tree = handlers.getTree();
+        if (!tree) {
+            return sdk.get_tree()
+                .then(
+                    result => {
+                        console.log('GOT TREE');
+                        let decodedTree = unescapeStr(result.tree);
+                        handlers.updateTree(decodedTree);
+                        dispatch({type: 'GOT_TREE', tree: JSON.parse(decodedTree)})
+                    }
+                )
+                .catch(error => { console.log(error); dispatch({type: 'ERROR', error})})
+        } else {
+            dispatch({type: 'GOT_TREE', tree: JSON.parse(tree)})
+        }
     }
 }
 export function save_and_register(data) {

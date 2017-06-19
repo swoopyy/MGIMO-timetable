@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import ModalPicker from 'react-native-modal-picker';
 import * as constants from '../constants';
-let tree = require('../assets/tree1.json');
 
 const styles = StyleSheet.create({
     container: {
@@ -86,15 +85,9 @@ export default class Settings extends Component {
     }
 
     componentDidMount() {
-        this._setInitialState(tree); //todo
+       // this._setInitialState(tree); //todo
 
-        //  this.props.getTree();
-    }
-
-    componentWillReceiveProps(nextProps){
-        //if (nextProps.tree) {
-         //   this._setInitialState(tree); //todo
-      //  }
+          this.props.getTree();
     }
 
     _setInitialState(_tree) {
@@ -142,7 +135,7 @@ export default class Settings extends Component {
     }
 
     _getTree = (props) => {
-        let out = tree;
+        let out = this.props.tree;
         const {program, faculty, department, course, academic_group, lang_group} = props;
         if (program) {
             out = out[program];
@@ -171,6 +164,10 @@ export default class Settings extends Component {
     }
 
     componentWillReceiveProps(props) {
+        if (props.tree) {
+            this._setInitialState(props.tree);
+            console.log(props.tree)
+        }
         const {navigator} = props;
         if (props.selectedTab === 'timetable' && this.props.selectedTab !== 'timetable') {
             let routes = navigator.getCurrentRoutes();

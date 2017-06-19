@@ -1,17 +1,6 @@
 import {deleteTimetable} from '../db/handlers';
 import {enhanceTimetable} from '../utils/utils';
-import {getTree, clearDB} from '../db/handlers';
-let tree = null;
-if (getTree()) {
-    var r = /\\u([\d\w]{4})/gi;
-    let x = getTree().tree;
-    x = x.replace(r, function (match, grp) {
-        return String.fromCharCode(parseInt(grp, 16)); } );
-    x = unescape(x);
-    console.log(x);
-  ///  console.log(decodeURIComponent(getTree().tree));
-    tree = JSON.parse(unescape(getTree().tree));
-}
+
 const initialState = {
     timetable: null,
     is_internet: true,
@@ -24,7 +13,6 @@ const initialState = {
 
 
 export default function sdk(state = initialState, action = {}) {
-    console.log(action.type)
     switch (action.type) {
         case 'USER_REGISTERING':
             return {
@@ -50,7 +38,6 @@ export default function sdk(state = initialState, action = {}) {
                 is_timetable_loading: true,
             };
         case 'GOT_TIMETABLE':
-            console.log(typeof action.timetable);
             return {
                 ...state,
                 timetable: enhanceTimetable(action.timetable),
