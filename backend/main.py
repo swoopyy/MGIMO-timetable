@@ -24,27 +24,6 @@ import logging
 import json
 from google.appengine.api import urlfetch
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        data = {
-                  'config': {
-                      'encoding': 'LINEAR16',
-                      'sampleRate': 16000,
-                      'languageCode': 'ru-RU',
-                    },
-                    'audio': {
-                       'uri': 'gs://mgimo-timetable.appspot.com/interview 1 .wav'
-                    }
-              }
-        headers = {'Content-Type': 'application/json'}
-        r = urlfetch.fetch(
-            url='https://speech.googleapis.com/v1beta1/speech:asyncrecognize?key=AIzaSyDjQQNAuw8b6A4hOi-EiqgRVUXlmXLoIQQ',
-            payload=json.dumps(data),
-            method=urlfetch.POST,
-            headers=headers)
-
-        self.response.write(r.content)
-
 
 class TreeScrapper(webapp2.RedirectHandler):
     @classmethod
@@ -64,18 +43,3 @@ app = webapp2.WSGIApplication([
     ('/scrape_tree', TreeScrapper),
     ('/', MainHandler)
 ], debug=True)
-
-# import requests
-# data = {
-#     'config': {
-#         'encoding': 'LINEAR16',
-#         'sampleRate': 16000,
-#         'languageCode': 'ru-RU',
-#     },
-#     'audio': {
-#         'uri': 'gs://mgimo-timetable.appspot.com/interview 1 .wav'
-#     }
-# }
-# headers = {'Content-Type': 'application/json'}
-# r = requests.post('https://speech.googleapis.com/v1beta1/speech:asyncrecognize?key=AIzaSyDjQQNAuw8b6A4hOi-EiqgRVUXlmXLoIQQ', data=json.dumps(data))
-# print(r.content)
